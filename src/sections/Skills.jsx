@@ -39,7 +39,7 @@ export default function Skills() {
     <section id="skills" className="relative section-pad container-px">
       <div className="max-w-7xl mx-auto">
         <SectionHeading
-          index="04"
+          index=""
           title="Skills & "
           accent="Stack"
           description="The tools that turn ideas into shipped systems."
@@ -77,12 +77,14 @@ export default function Skills() {
                   </p>
                   <div className="flex flex-wrap gap-2">
                     {items.map((item) => (
-                      <span
+                      <motion.span
                         key={item}
-                        className="text-xs sm:text-sm px-3 py-1.5 rounded-full border border-line text-muted hover:border-emerald/50 hover:text-white transition-colors"
+                        whileHover={{ scale: 1.06, y: -2, color: '#ffffff', borderColor: 'rgba(0, 229, 153, 0.6)', backgroundColor: 'rgba(0, 229, 153, 0.08)' }}
+                        transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+                        className="text-xs sm:text-sm px-3 py-1.5 rounded-full border border-line text-muted transition-colors cursor-default select-none"
                       >
                         {item}
-                      </span>
+                      </motion.span>
                     ))}
                   </div>
                 </GlassCard>

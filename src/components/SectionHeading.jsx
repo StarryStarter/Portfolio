@@ -4,17 +4,19 @@ import { fadeUp, viewport } from '../animations/variants'
 export default function SectionHeading({ index, title, accent, description, align = 'left' }) {
   return (
     <div className={align === 'center' ? 'text-center mx-auto max-w-2xl' : ''}>
-      <motion.p
-        variants={fadeUp}
-        initial="hidden"
-        whileInView="visible"
-        viewport={viewport}
-        className="eyebrow flex items-center gap-2 justify-start"
-        style={align === 'center' ? { justifyContent: 'center' } : undefined}
-      >
-        <span className="inline-block w-6 h-px bg-emerald" />
-        LOG // {index}
-      </motion.p>
+      {index && (
+        <motion.p
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewport}
+          className="eyebrow flex items-center gap-2 justify-start mb-2"
+          style={align === 'center' ? { justifyContent: 'center' } : undefined}
+        >
+          <span className="inline-block w-6 h-px bg-emerald" />
+          {index}
+        </motion.p>
+      )}
       <motion.h2
         variants={fadeUp}
         custom={0.08}

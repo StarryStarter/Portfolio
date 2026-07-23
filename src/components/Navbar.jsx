@@ -11,7 +11,16 @@ export default function Navbar() {
   const activeId = useActiveSection(navLinks.map((l) => l.href.replace('#', '')))
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24)
+    let ticking = false
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true
+        requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 24)
+          ticking = false
+        })
+      }
+    }
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
@@ -25,14 +34,12 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
-        scrolled ? 'py-3' : 'py-5'
-      }`}
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${scrolled ? 'py-3' : 'py-5'
+        }`}
     >
       <nav
-        className={`container-px mx-auto flex items-center justify-between max-w-7xl rounded-2xl transition-all duration-300 ${
-          scrolled ? 'glass-strong px-5 py-3 mx-4 sm:mx-8' : 'px-2'
-        }`}
+        className={`container-px mx-auto flex items-center justify-between max-w-7xl rounded-2xl transition-all duration-300 ${scrolled ? 'glass-strong px-5 py-3 mx-4 sm:mx-8' : 'px-2'
+          }`}
         aria-label="Primary"
       >
         <a
@@ -41,7 +48,7 @@ export default function Navbar() {
           className="font-display text-lg font-semibold tracking-tight"
           data-cursor="pointer"
         >
-          Sachin<span className="text-emerald">.</span>
+          Sachin<span className="text-emerald"></span>
         </a>
 
         <ul className="hidden lg:flex items-center gap-1">

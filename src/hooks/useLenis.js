@@ -16,11 +16,12 @@ export default function useLenis() {
     if (prefersReducedMotion) return
 
     const lenis = new Lenis({
-      duration: 1.1,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      duration: 0.7,
+      easing: (t) => 1 - Math.pow(1 - t, 3), // Smooth ease-out curve near end of scroll
       smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 1.2,
+      wheelMultiplier: 1.1,
+      touchMultiplier: 1.0,
+      infinite: false,
     })
 
     function raf(time) {
@@ -28,7 +29,7 @@ export default function useLenis() {
     }
 
     gsap.ticker.add(raf)
-    gsap.ticker.lagSmoothing(0)
+    gsap.ticker.lagSmoothing(500, 33)
 
     return () => {
       gsap.ticker.remove(raf)

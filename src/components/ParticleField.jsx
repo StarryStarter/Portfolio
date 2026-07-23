@@ -5,7 +5,7 @@ import { useEffect, useRef } from 'react'
  * connected by faint lines when close together. Pauses off-screen and
  * respects prefers-reduced-motion.
  */
-export default function ParticleField({ density = 46, className = '' }) {
+export default function ParticleField({ density = 30, className = '' }) {
   const canvasRef = useRef(null)
 
   useEffect(() => {
@@ -40,30 +40,37 @@ export default function ParticleField({ density = 46, className = '' }) {
       if (!running) return
       ctx.clearRect(0, 0, width, height)
 
-      particles.forEach((p) => {
+      // Batch all particle dots into a single fill pass
+      ctx.fillStyle = 'rgba(0, 229, 153, 0.55)'
+      ctx.beginPath()
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i]
         p.x += p.vx
         p.y += p.vy
         if (p.x < 0 || p.x > width) p.vx *= -1
         if (p.y < 0 || p.y > height) p.vy *= -1
-
-        ctx.beginPath()
+        ctx.moveTo(p.x + p.r, p.y)
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2)
-        ctx.fillStyle = 'rgba(0, 229, 153, 0.55)'
-        ctx.fill()
-      })
+      }
+      ctx.fill()
 
+      // Use squared distance to avoid expensive Math.hypot/sqrt
+      const maxDist = 120 * devicePixelRatio
+      const maxDistSq = maxDist * maxDist
+      ctx.lineWidth = 1
       for (let i = 0; i < particles.length; i++) {
+        const a = particles[i]
         for (let j = i + 1; j < particles.length; j++) {
-          const a = particles[i]
           const b = particles[j]
-          const dist = Math.hypot(a.x - b.x, a.y - b.y)
-          const maxDist = 130 * devicePixelRatio
-          if (dist < maxDist) {
+          const dx = a.x - b.x
+          const dy = a.y - b.y
+          const distSq = dx * dx + dy * dy
+          if (distSq < maxDistSq) {
+            const alpha = 0.12 * (1 - Math.sqrt(distSq) / maxDist)
+            ctx.strokeStyle = `rgba(0, 229, 153, ${alpha})`
             ctx.beginPath()
             ctx.moveTo(a.x, a.y)
             ctx.lineTo(b.x, b.y)
-            ctx.strokeStyle = `rgba(0, 229, 153, ${0.12 * (1 - dist / maxDist)})`
-            ctx.lineWidth = 1
             ctx.stroke()
           }
         }

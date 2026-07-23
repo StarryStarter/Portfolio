@@ -9,7 +9,7 @@ export default function Experience() {
     <section id="experience" className="relative section-pad container-px">
       <div className="max-w-7xl mx-auto">
         <SectionHeading
-          index="03"
+          index=""
           title="Experience"
           description="Where the ideas met production traffic."
         />

@@ -25,7 +25,7 @@ export default function About() {
     <section id="about" className="relative section-pad container-px">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-[0.9fr,1.1fr] gap-14 items-start">
         <SectionHeading
-          index="01"
+          index=""
           title="About "
           accent="Sachin"
           description="A quick systems check on who's building this."

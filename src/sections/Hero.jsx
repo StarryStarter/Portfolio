@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { motion } from 'framer-motion'
 import { FiArrowDown, FiDownload } from 'react-icons/fi'
 import { profile, roles } from '../utils/data'
 import useTypingEffect from '../hooks/useTypingEffect'
@@ -46,31 +47,31 @@ export default function Hero() {
         <div>
           <p ref={eyebrowRef} className="eyebrow">
             <span className="inline-block w-6 h-px bg-emerald mr-2 align-middle" />
-            SYSTEM ONLINE — PORTFOLIO v1.0
+            WELCOME TO MY PORTFOLIO
           </p>
 
           <h1 className="mt-6 font-display font-semibold leading-[1.05] text-[13vw] sm:text-6xl lg:text-7xl overflow-hidden">
             <span className="block overflow-hidden">
-              <span ref={titleLine1} className="block">
-                Hi, I'm <span className="text-emerald">Sachin Kumar</span>
+              <span ref={titleLine1} className="block text-white/50">
+                Hi, I'm
               </span>
             </span>
             <span className="block overflow-hidden mt-1">
-              <span ref={titleLine2} className="block text-white/40">
-                I build reliable, intelligent systems.
+              <span ref={titleLine2} className="block text-emerald font-bold">
+                Sachin Kumar
               </span>
             </span>
           </h1>
 
-          <p ref={subtitleRef} className="mt-7 max-w-xl text-lg text-muted leading-relaxed">
-            <span className="font-mono text-emerald">{'>'} </span>
+          <div className="mt-5 font-mono text-sm sm:text-base text-muted flex items-center gap-2">
+            <span className="text-emerald font-bold">{'>'}</span>
+            <span className="text-white font-medium">{typed}</span>
+            <span className="inline-block w-[2px] h-4 bg-emerald ml-0.5 animate-pulse" />
+          </div>
+
+          <p ref={subtitleRef} className="mt-6 max-w-xl text-base sm:text-lg text-muted leading-relaxed">
             {profile.tagline}
           </p>
-
-          <div className="mt-4 font-mono text-sm text-muted h-6">
-            role: <span className="text-white">{typed}</span>
-            <span className="inline-block w-[2px] h-4 bg-emerald ml-1 align-middle animate-pulse" />
-          </div>
 
           <div ref={ctasRef} className="mt-10 flex flex-wrap items-center gap-4">
             <MagneticButton
@@ -97,21 +98,34 @@ export default function Hero() {
           </div>
         </div>
 
-        <div ref={portraitRef} className="relative mx-auto lg:mx-0 w-64 h-64 sm:w-80 sm:h-80">
+        <motion.div
+          ref={portraitRef}
+          whileHover={{ scale: 1.04 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+          className="relative mx-auto lg:mx-0 w-64 h-64 sm:w-80 sm:h-80 cursor-pointer"
+        >
           <div
-            className="absolute inset-0 rounded-[2rem] p-[3px] bg-[conic-gradient(from_0deg,#00E599,#7C9CFF,#00E599)] animate-spin"
-            style={{ animationDuration: '10s' }}
+            className="absolute inset-0 rounded-[2rem] p-[3px] animate-spin"
+            style={{
+              background: 'conic-gradient(from 0deg, #00E599, #7C9CFF, #00E599)',
+              animationDuration: '10s',
+              willChange: 'transform',
+            }}
           >
-            <div className="w-full h-full rounded-[calc(2rem-3px)] glass-strong grid place-items-center overflow-hidden">
+            <div className="w-full h-full rounded-[calc(2rem-3px)] bg-surface grid place-items-center overflow-hidden">
               <span className="font-display text-6xl sm:text-7xl font-bold text-white/90 select-none">
                 SK
               </span>
             </div>
           </div>
-          <div className="absolute -bottom-4 -left-4 glass-strong rounded-xl px-4 py-2 font-mono text-xs">
-            <span className="text-emerald">●</span> Available for opportunities
-          </div>
-        </div>
+          <motion.div
+            whileHover={{ scale: 1.08, y: -3 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 15 }}
+            className="absolute -bottom-4 -left-4 glass-strong rounded-xl px-4 py-2 font-mono text-xs shadow-lg border border-emerald/20"
+          >
+            <span className="text-emerald animate-pulse">●</span> Available for opportunities
+          </motion.div>
+        </motion.div>
       </div>
 
       <a

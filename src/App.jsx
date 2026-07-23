@@ -4,13 +4,10 @@ import Footer from './components/Footer'
 import CustomCursor from './components/CustomCursor'
 import ScrollProgress from './components/ScrollProgress'
 import FloatingBlobs from './components/FloatingBlobs'
-import useLenis from './hooks/useLenis'
 import Home from './pages/Home'
 import NotFound from './pages/NotFound'
 
 export default function App() {
-  useLenis()
-
   return (
     <div className="relative">
       <a href="#main-content" className="skip-link">

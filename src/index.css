@@ -13,7 +13,7 @@
 }
 
 html {
-  scroll-behavior: auto;
+  scroll-behavior: smooth;
 }
 
 html,
@@ -70,18 +70,16 @@ body {
   color: transparent;
 }
 
-/* Glassmorphism */
+/* Glassmorphism — .glass uses opaque BG (no blur) for perf; .glass-strong uses real blur (navbar/portrait only) */
 .glass {
-  background: rgba(255, 255, 255, 0.035);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
+  background: rgba(17, 18, 19, 0.55);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .glass-strong {
   background: rgba(17, 18, 19, 0.65);
-  backdrop-filter: blur(22px);
-  -webkit-backdrop-filter: blur(22px);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(255, 255, 255, 0.09);
 }
 
@@ -123,6 +121,7 @@ body {
   z-index: 40;
   transform: translate(-50%, -50%);
   will-change: transform;
+  contain: layout style;
 }
 
 .cursor-ring {

@@ -9,7 +9,7 @@ export default function Education() {
   return (
     <section id="education" className="relative section-pad container-px">
       <div className="max-w-7xl mx-auto">
-        <SectionHeading index="02" title="Education" description="The formal record." />
+        <SectionHeading index="" title="Education" description="Academic background and foundation." />
 
         <div className="mt-12 space-y-6">
           {education.map((edu, i) => (

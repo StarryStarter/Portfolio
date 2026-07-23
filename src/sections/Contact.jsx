@@ -57,7 +57,7 @@ export default function Contact() {
       <div className="max-w-7xl mx-auto grid lg:grid-cols-[0.8fr,1.2fr] gap-14">
         <div>
           <SectionHeading
-            index="07"
+            index=""
             title="Get in "
             accent="Touch"
             description="Have a role, a project, or just a hard problem worth discussing?"

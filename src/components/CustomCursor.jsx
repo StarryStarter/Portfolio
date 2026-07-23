@@ -13,8 +13,8 @@ export default function CustomCursor() {
   const dotY = useSpring(y, { stiffness: 1000, damping: 60 })
   const ringX = useSpring(x, { stiffness: 220, damping: 26 })
   const ringY = useSpring(y, { stiffness: 220, damping: 26 })
-  const glowX = useSpring(x, { stiffness: 90, damping: 20 })
-  const glowY = useSpring(y, { stiffness: 90, damping: 20 })
+  const glowX = useSpring(x, { stiffness: 60, damping: 30 })
+  const glowY = useSpring(y, { stiffness: 60, damping: 30 })
 
   const frame = useRef()
 

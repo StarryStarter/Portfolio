@@ -10,7 +10,7 @@ export default function Projects() {
     <section id="projects" className="relative section-pad container-px">
       <div className="max-w-7xl mx-auto">
         <SectionHeading
-          index="05"
+          index=""
           title="Selected "
           accent="Projects"
           description="Two systems built to make noisy problems legible."
@@ -36,22 +36,26 @@ export default function Projects() {
                     0{i + 1}
                   </span>
                   <div className="flex gap-2">
-                    <a
+                    <motion.a
                       href={project.links.code}
                       aria-label={`${project.title} source code`}
                       data-cursor="pointer"
-                      className="w-9 h-9 grid place-items-center rounded-full border border-line hover:border-emerald hover:text-emerald transition-colors"
+                      whileHover={{ scale: 1.15, rotate: 5, color: '#00E599', borderColor: '#00E599' }}
+                      transition={{ type: 'spring', stiffness: 350, damping: 15 }}
+                      className="w-9 h-9 grid place-items-center rounded-full border border-line transition-colors"
                     >
                       <FiGithub />
-                    </a>
-                    <a
+                    </motion.a>
+                    <motion.a
                       href={project.links.live}
                       aria-label={`${project.title} live demo`}
                       data-cursor="pointer"
-                      className="w-9 h-9 grid place-items-center rounded-full border border-line hover:border-emerald hover:text-emerald transition-colors"
+                      whileHover={{ scale: 1.15, rotate: -5, color: '#00E599', borderColor: '#00E599' }}
+                      transition={{ type: 'spring', stiffness: 350, damping: 15 }}
+                      className="w-9 h-9 grid place-items-center rounded-full border border-line transition-colors"
                     >
                       <FiArrowUpRight />
-                    </a>
+                    </motion.a>
                   </div>
                 </div>
 
@@ -60,12 +64,13 @@ export default function Projects() {
 
                 <div className="mt-6 flex flex-wrap gap-2">
                   {project.stack.map((tech) => (
-                    <span
+                    <motion.span
                       key={tech}
-                      className="text-xs font-mono px-2.5 py-1 rounded-md bg-white/[0.04] text-muted"
+                      whileHover={{ scale: 1.08, color: '#ffffff', backgroundColor: 'rgba(255,255,255,0.08)' }}
+                      className="text-xs font-mono px-2.5 py-1 rounded-md bg-white/[0.04] text-muted transition-colors cursor-default"
                     >
                       {tech}
-                    </span>
+                    </motion.span>
                   ))}
                 </div>
               </GlassCard>
