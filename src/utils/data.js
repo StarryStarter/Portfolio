@@ -3,14 +3,14 @@ export const profile = {
   role: 'Software Engineer · AI Engineer · Full-Stack Developer',
   tagline:
     'I build modern web applications and AI-powered products that solve real-world problems. Passionate about creating seamless user experiences, scalable systems, and turning ideas into impactful software.',
-  location: 'Dhanbad, Jharkhand, India',
-  email: 'sachin.kumar@example.com',
-  resumeUrl: '/Sachin_Kumar_Resume.pdf',
+  location: 'Gaya, Bihar, India',
+  email: 'sachinkumar91133019@google.com',
+  resumeUrl: '/Sachin_Kumar_CV.pdf',
   socials: {
-    github: 'https://github.com/',
-    linkedin: 'https://linkedin.com/',
-    twitter: 'https://twitter.com/',
-    leetcode: 'https://leetcode.com/',
+    github: 'https://github.com/StarryStarter',
+    linkedin: 'https://www.linkedin.com/in/sachin-kumar-0b8590284/',
+    // twitter: 'https://twitter.com/',
+    // leetcode: 'https://leetcode.com/',
   },
 }
 
@@ -23,7 +23,7 @@ export const about = {
     "Outside of projects, I spend time solving coding problems, exploring new tools and frameworks, and continuously learning through hands-on practice. I'm always looking for opportunities to grow as an engineer, collaborate with others, and build software that solves real-world problems.",
   ],
   stats: [
-    { label: 'DSA Problems Solved', value: 500, suffix: '+' },
+    { label: 'DSA Problems Solved', value: 650, suffix: '+' },
     { label: 'Coding Contests', value: 45, suffix: '+' },
     { label: 'JEE Physics Percentile', value: 100, suffix: '' },
     { label: 'Years Building', value: 3, suffix: '+' },
@@ -68,7 +68,7 @@ export const projects = [
     id: 'pfis',
     title: 'Payment Failure Intelligence System',
     description:
-      'AI-powered payment failure analysis platform using RAG and a domain-specific knowledge base to automate diagnosis and provide resolution recommendations.',
+      'AI-powered payment failure analysis platform using RAG and a domain-specific knowledge base to automate diagnosis and provide resolution recommendations. Use Email : sachinkumar91133019@gmail.com and Password : 1234567 for testing',
     stack: [
       'FastAPI',
       'React',
@@ -77,7 +77,7 @@ export const projects = [
       'ChromaDB',
       'PostgreSQL',
     ],
-    links: { live: '#', code: '#' },
+    links: { live: 'https://pfis-diagnostic-app.vercel.app/', code: 'https://github.com/StarryStarter/pfis-diagnostic-app' },
     accent: '#00E599',
   },
   {
@@ -93,7 +93,7 @@ export const projects = [
       'Gemini API',
       'JWT',
     ],
-    links: { live: '#', code: '#' },
+    links: { live: 'https://blogsy-full-stack-blogging-platform-three.vercel.app/', code: 'https://github.com/StarryStarter/blogsy' },
     accent: '#7C9CFF',
   },
   {
@@ -109,7 +109,7 @@ export const projects = [
       'JWT',
       'Tailwind CSS',
     ],
-    links: { live: '#', code: '#' },
+    links: { live: 'https://skill-nova-course-selling-app.vercel.app/', code: 'https://github.com/StarryStarter/skillnova' },
     accent: '#FF8A00',
   },
   {
@@ -125,7 +125,7 @@ export const projects = [
       'CSS',
       'JavaScript',
     ],
-    links: { live: '#', code: '#' },
+    links: { live: '#', code: 'https://github.com/StarryStarter/visual-auth-system' },
     accent: '#B56EFF',
   },
 ]

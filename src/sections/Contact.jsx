@@ -8,6 +8,8 @@ import GlassCard from '../components/GlassCard'
 import MagneticButton from '../components/MagneticButton'
 import { fadeUp, viewport } from '../animations/variants'
 
+console.log(import.meta.env);
+
 const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID
 const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
 const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
@@ -22,8 +24,14 @@ export default function Contact() {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }))
   }
 
+
   const handleSubmit = async (e) => {
     e.preventDefault()
+    console.log({
+      service: EMAILJS_SERVICE_ID,
+      template: EMAILJS_TEMPLATE_ID,
+      key: EMAILJS_PUBLIC_KEY,
+    })
 
     if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID || !EMAILJS_PUBLIC_KEY) {
       console.warn('EmailJS env vars are not configured — see README for setup.')

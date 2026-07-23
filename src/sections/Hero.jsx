@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
-import { FiArrowDown, FiDownload } from 'react-icons/fi'
+import { FiArrowDown, FiGithub } from 'react-icons/fi'
 import { profile, roles } from '../utils/data'
 import useTypingEffect from '../hooks/useTypingEffect'
 import { playHeroEntrance } from '../animations/gsapHero'
@@ -28,6 +28,7 @@ export default function Hero() {
       portrait: portraitRef.current,
       spine: spineRef.current,
     })
+
     return () => ctx.kill()
   }, [])
 
@@ -39,6 +40,7 @@ export default function Hero() {
       <div className="absolute inset-0 -z-10 opacity-60">
         <ParticleField density={42} />
       </div>
+
       <div className="absolute inset-0 -z-10 hidden md:block">
         <AnimatedLine ref={spineRef} />
       </div>
@@ -56,6 +58,7 @@ export default function Hero() {
                 Hi, I'm
               </span>
             </span>
+
             <span className="block overflow-hidden mt-1">
               <span ref={titleLine2} className="block text-emerald font-bold">
                 Sachin Kumar
@@ -69,26 +72,37 @@ export default function Hero() {
             <span className="inline-block w-[2px] h-4 bg-emerald ml-0.5 animate-pulse" />
           </div>
 
-          <p ref={subtitleRef} className="mt-6 max-w-xl text-base sm:text-lg text-muted leading-relaxed">
+          <p
+            ref={subtitleRef}
+            className="mt-6 max-w-xl text-base sm:text-lg text-muted leading-relaxed"
+          >
             {profile.tagline}
           </p>
 
-          <div ref={ctasRef} className="mt-10 flex flex-wrap items-center gap-4">
+          <div
+            ref={ctasRef}
+            className="mt-10 flex flex-wrap items-center gap-4"
+          >
             <MagneticButton
               as="a"
-              href={profile.resumeUrl}
-              download
+              href={profile.socials.github}
+              target="_blank"
+              rel="noopener noreferrer"
               data-cursor="pointer"
               className="inline-flex items-center gap-2 rounded-full bg-emerald text-ink font-semibold px-7 py-3.5 shadow-emerald-glow hover:brightness-110 transition"
             >
-              <FiDownload /> Download Resume
+              <FiGithub />
+              View GitHub
             </MagneticButton>
+
             <MagneticButton
               as="a"
               href="#contact"
               onClick={(e) => {
                 e.preventDefault()
-                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+                document
+                  .getElementById('contact')
+                  ?.scrollIntoView({ behavior: 'smooth' })
               }}
               data-cursor="pointer"
               className="inline-flex items-center gap-2 rounded-full border border-line px-7 py-3.5 font-semibold hover:border-emerald hover:text-emerald transition"
@@ -100,31 +114,50 @@ export default function Hero() {
 
         <motion.div
           ref={portraitRef}
-          whileHover={{ scale: 1.04 }}
-          transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-          className="relative mx-auto lg:mx-0 w-64 h-64 sm:w-80 sm:h-80 cursor-pointer"
+          initial={{
+            opacity: 0,
+            scale: 0.85,
+          }}
+          animate={{
+            opacity: 1,
+            scale: 1,
+            y: [0, -10, 0],
+          }}
+          transition={{
+            opacity: { duration: 0.8 },
+            scale: { duration: 0.8 },
+            y: {
+              duration: 5,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            },
+          }}
+          whileHover={{
+            scale: 1.03,
+          }}
+          className="relative mx-auto lg:mx-0 w-72 h-72 sm:w-96 sm:h-96"
         >
-          <div
-            className="absolute inset-0 rounded-[2rem] p-[3px] animate-spin"
-            style={{
-              background: 'conic-gradient(from 0deg, #00E599, #7C9CFF, #00E599)',
-              animationDuration: '10s',
-              willChange: 'transform',
-            }}
-          >
-            <div className="w-full h-full rounded-[calc(2rem-3px)] bg-surface grid place-items-center overflow-hidden">
-              <span className="font-display text-6xl sm:text-7xl font-bold text-white/90 select-none">
-                SK
-              </span>
-            </div>
-          </div>
           <motion.div
-            whileHover={{ scale: 1.08, y: -3 }}
-            transition={{ type: 'spring', stiffness: 400, damping: 15 }}
-            className="absolute -bottom-4 -left-4 glass-strong rounded-xl px-4 py-2 font-mono text-xs shadow-lg border border-emerald/20"
-          >
-            <span className="text-emerald animate-pulse">●</span> Available for opportunities
-          </motion.div>
+            animate={{
+              scale: [1, 1.08, 1],
+              opacity: [0.25, 0.45, 0.25],
+            }}
+            transition={{
+              duration: 4,
+              repeat: Infinity,
+              ease: 'easeInOut',
+            }}
+            className="absolute inset-0 -z-10 rounded-full bg-emerald blur-[90px]"
+          />
+
+          <div className="glass rounded-[32px] overflow-hidden border border-white/10 shadow-2xl">
+            <img
+              src="/images/profile.jpg"
+              alt="Sachin Kumar"
+              className="w-full h-full object-cover"
+              draggable={false}
+            />
+          </div>
         </motion.div>
       </div>
 
@@ -132,7 +165,9 @@ export default function Hero() {
         href="#about"
         onClick={(e) => {
           e.preventDefault()
-          document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })
+          document
+            .getElementById('about')
+            ?.scrollIntoView({ behavior: 'smooth' })
         }}
         data-cursor="pointer"
         className="hidden sm:flex absolute bottom-8 left-1/2 -translate-x-1/2 flex-col items-center gap-2 text-muted text-xs font-mono"

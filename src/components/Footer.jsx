@@ -21,7 +21,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-end justify-between gap-10">
         <div>
           <p className="font-display text-2xl sm:text-3xl font-semibold">
-            Let's build something <span className="text-emerald">reliable</span>.
+            Let's build something <span className="text-emerald">impactful</span>.
           </p>
           <a
             href={`mailto:${profile.email}`}
@@ -43,7 +43,7 @@ export default function Footer() {
                 rel="noreferrer noopener"
                 aria-label={key}
                 data-cursor="pointer"
-                className="w-11 h-11 grid place-items-center rounded-full glass text-muted hover:text-emerald hover:border-emerald/40 transition-colors"
+                className="w-11 h-11 grid place-items-center rounded-full glass text-muted hover:text-emerald hover:border-emerald/40 hover:-translate-y-1 hover:scale-110 transition-all duration-300"
               >
                 <Icon />
               </a>
@@ -53,7 +53,7 @@ export default function Footer() {
       </div>
 
       <div className="max-w-7xl mx-auto mt-12 flex flex-col-reverse sm:flex-row items-center justify-between gap-4 text-sm text-muted">
-        <p>© {year} {profile.name}. Built from scratch, deployed on Vercel.</p>
+        <p>© {year} {profile.name}. Built with React & Tailwind CSS.</p>
         <MagneticButton
           onClick={scrollTop}
           aria-label="Back to top"
